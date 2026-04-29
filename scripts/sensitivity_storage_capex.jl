@@ -32,9 +32,8 @@ function run_case(label::String; multiplier::Float64=1.0, start_capex::Union{Not
     add_agriculture_constraints!(model, sets, params)
     optimize!(model)
 
-    cap = model[:installed_capacity_gw]
-    battery = value(cap["battery_storage_4h",2050])
-    return (trajectory=label, battery_storage_gw_2050=battery)
+    battery_mw = sum(value(model[:battery_capacity_mw][p,2050]) for p in sets.provinces)
+    return (trajectory=label, battery_storage_gw_2050=battery_mw/1000.0)
 end
 
 mkpath("results/tables")

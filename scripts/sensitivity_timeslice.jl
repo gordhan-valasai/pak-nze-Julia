@@ -45,10 +45,10 @@ function run_case(n::Int)
     solve_time = time() - t0
 
     cap = model[:installed_capacity_gw]
-    solar = value(cap["solar_utility",2050]) + value(cap["solar_distributed",2050])
-    battery = "battery_storage_4h" in sets.technologies ? value(cap["battery_storage_4h",2050]) : 0.0
+    solar_mw = value(cap["solar_utility",2050]) + value(cap["solar_distributed",2050])
+    battery_mw = sum(value(model[:battery_capacity_mw][p,2050]) for p in sets.provinces)
     cost_bn = objective_value(model) / 1e9
-    return (timeslices=n, solar_pv_gw=solar, battery_storage_gw=battery, total_system_cost_usd_bn=cost_bn, solve_time_s=solve_time)
+    return (timeslices=n, solar_pv_gw=solar_mw/1000.0, battery_storage_gw=battery_mw/1000.0, total_system_cost_usd_bn=cost_bn, solve_time_s=solve_time)
 end
 
 mkpath("results/tables")

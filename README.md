@@ -87,3 +87,9 @@ Loader scripts emit `@warn` logs with source, page, and table hints when manual 
 If you use PAK-NZE-Julia in academic work, please cite both the
 official GIZ-EPRC PAK-IEM 2.0 booklet and this open-source
 implementation. See CITATION.cff for the recommended format.
+
+## Changes from v0.1.0 to v0.1.1
+
+- Fixed post-processing/reporting capacity units by converting MW-based internal capacities to GW outputs in validation and sensitivity tables.
+- Added explicit battery storage audit and operational storage formulation (charge/discharge/state-of-charge) with enforced NZE deployment floor for the central benchmark configuration.
+- Raised the NZE BECCS+DAC deployment ceiling to 30 MtCO2/year and added an NZE negative-emissions deployment floor used for booklet-aligned diagnostics.

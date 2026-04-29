@@ -20,6 +20,8 @@ mutable struct ModelParameters
     green_ammonia_target_2050::Float64
     cement_ccs_target_2050::Float64
     electrolyser_capacity_gw_2040::Float64
+    battery_storage_target_gw_2050::Float64
+    negative_emissions_target_mt_2050::Float64
     gas_gwp::Dict{String, Float64}
     gas_emission_factor_mt_per_mwh::Dict{Tuple{String, String}, Float64}
     sector_by_technology::Dict{String, String}
@@ -97,7 +99,8 @@ function build_parameters(sets::ModelSets, scenario_config::AbstractDict, constr
     gas_emission_factor_mt_per_mwh[("N2O","coal_imported")] = 1.2e-6
     gas_emission_factor_mt_per_mwh[("HFC","electricity")] = 1.0e-8
 
-    negative_emission_potential_mtco2 = Dict{Int, Float64}(y => (y < 2045 ? 0.0 : 15.0 * (y - 2044) / (2050 - 2044)) for y in sets.years)
+    neg_ceiling_2050 = Float64(get(sc, "negative_emissions_ceiling_mt_2050", 15.0))
+    negative_emission_potential_mtco2 = Dict{Int, Float64}(y => (y < 2045 ? 0.0 : neg_ceiling_2050 * (y - 2044) / (2050 - 2044)) for y in sets.years)
     negative_emission_cost_usd_per_tco2 = Dict("beccs_power"=>140.0, "dac"=>50.0)
 
     shares_2024 = Dict("Punjab"=>0.62, "Sindh"=>0.22, "KPK"=>0.08, "Balochistan"=>0.04, "GB"=>0.005, "AJK"=>0.005, "Islamabad"=>0.03)
@@ -120,5 +123,5 @@ function build_parameters(sets::ModelSets, scenario_config::AbstractDict, constr
     climate_pathway = String(get(climate_cfg, "temperature_anomaly_pathway", "RCP4_5"))
     temperature_anomaly_c = _interp_temperature(climate_pathway, sets.years)
 
-    ModelParameters(discount_factor,capex_usd_per_kw,fixed_om_usd_per_kw_yr,var_om_usd_per_mwh,efficiency_fraction,capacity_factor,emission_factor_tco2_per_mwh,fuel_price_usd_per_mwh,demand_by_service,max_potential_gw,max_buildrate_gw_per_year,carbon_price_usd_per_tco2,re_target_share,selected_scenario,Bool(get(sc,"net_zero_2050",false)),Float64(get(sc,"transport_electrification_target_2050",0.35)),Float64(get(sc,"biomethane_cooking_target_2050",0.2)),Float64(get(sc,"ev_sales_share_target_2040",0.5)),Float64(get(sc,"green_ammonia_target_2050",0.5)),Float64(get(sc,"cement_ccs_target_2050",0.4)),Float64(get(sc,"electrolyser_capacity_gw_2040",0.0)),gas_gwp,gas_emission_factor_mt_per_mwh,sector_by_technology,negative_emission_potential_mtco2,negative_emission_cost_usd_per_tco2,province_demand_share,provincial_solar_potential_gw,provincial_wind_potential_gw,provincial_hydro_potential_gw,transmission_capacity_mw,transmission_distance_km,climate_feedback_enabled,climate_pathway,temperature_anomaly_c)
+    ModelParameters(discount_factor,capex_usd_per_kw,fixed_om_usd_per_kw_yr,var_om_usd_per_mwh,efficiency_fraction,capacity_factor,emission_factor_tco2_per_mwh,fuel_price_usd_per_mwh,demand_by_service,max_potential_gw,max_buildrate_gw_per_year,carbon_price_usd_per_tco2,re_target_share,selected_scenario,Bool(get(sc,"net_zero_2050",false)),Float64(get(sc,"transport_electrification_target_2050",0.35)),Float64(get(sc,"biomethane_cooking_target_2050",0.2)),Float64(get(sc,"ev_sales_share_target_2040",0.5)),Float64(get(sc,"green_ammonia_target_2050",0.5)),Float64(get(sc,"cement_ccs_target_2050",0.4)),Float64(get(sc,"electrolyser_capacity_gw_2040",0.0)),Float64(get(sc,"battery_storage_target_gw_2050",0.0)),Float64(get(sc,"negative_emissions_target_mt_2050",0.0)),gas_gwp,gas_emission_factor_mt_per_mwh,sector_by_technology,negative_emission_potential_mtco2,negative_emission_cost_usd_per_tco2,province_demand_share,provincial_solar_potential_gw,provincial_wind_potential_gw,provincial_hydro_potential_gw,transmission_capacity_mw,transmission_distance_km,climate_feedback_enabled,climate_pathway,temperature_anomaly_c)
 end

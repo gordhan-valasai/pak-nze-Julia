@@ -6,7 +6,7 @@ authors:
     given-names: Gordhan Das
     orcid: "https://orcid.org/0000-0002-0476-4927"
     affiliation: "Quaid-e-Awam University of Engineering, Science and Technology (QUEST), Nawabshah, Pakistan"
-version: "0.1.0"
+version: "0.1.1"
 date-released: "2026-04-29"
 license: MIT
 doi: "10.5281/zenodo.PLACEHOLDER"

@@ -78,6 +78,26 @@ function build_and_solve(scenario::String; solver::String="auto", climate_enable
     end
     CSV.write("results/tables/$(tag)_interprovincial_flow_2050.csv", fl)
 
+    cap = model[:installed_capacity_gw]
+    solar_gw = (value(cap["solar_utility",2050]) + value(cap["solar_distributed",2050])) / 1000.0
+    battery_gw = sum(value(model[:battery_capacity_mw][p,2050]) for p in sets.provinces) / 1000.0
+    total_capacity_gw = sum(value(cap[t,2050]) for t in sets.technologies) / 1000.0
+    total_capacity_2024_gw = sum(value(cap[t,2024]) for t in sets.technologies) / 1000.0
+    hydro_gw = (value(cap["hydro_run_of_river",2050]) + value(cap["hydro_reservoir",2050])) / 1000.0
+    onshore_wind_gw = value(cap["onshore_wind",2050]) / 1000.0
+    nuclear_gw = value(cap["nuclear_k2_k3",2050]) / 1000.0
+    electrolyser_gw_2050 = value(model[:electrolyser_capacity_gw][2050])
+    CSV.write("results/tables/$(tag)_capacity_summary.csv", DataFrame(
+        solar_pv_gw=[solar_gw],
+        battery_storage_gw=[battery_gw],
+        total_installed_capacity_2024_gw=[total_capacity_2024_gw],
+        total_installed_capacity_2050_gw=[total_capacity_gw],
+        hydropower_2050_gw=[hydro_gw],
+        onshore_wind_2050_gw=[onshore_wind_gw],
+        nuclear_2050_gw=[nuclear_gw],
+        electrolyser_2050_gw=[electrolyser_gw_2050]
+    ))
+
     return (objective_usd=obj, re_share_2050=re2050, emissions_2050_mt=em2050, solver=solver_name)
 end
 

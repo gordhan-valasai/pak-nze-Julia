@@ -48,12 +48,13 @@ function run_validation()
 
     nze_summary = "results/tables/nze_summary.csv"
     nze_neg = "results/tables/nze_negative_emissions.csv"
+    nze_cap = "results/tables/nze_capacity_summary.csv"
 
     re_share = _safe_value(nze_summary, :re_share_2050, default=NaN) * 100
     add_primary("renewable_share_percent", re_share)
-    add_primary("solar_pv_gw", _safe_value("results/tables/timeslice_sensitivity.csv", :solar_pv_gw, default=120.0))
+    add_primary("solar_pv_gw", _safe_value(nze_cap, :solar_pv_gw, default=120.0))
     add_primary("electrolyser_gw", 5.0)
-    add_primary("battery_storage_gw", _safe_value("results/tables/timeslice_sensitivity.csv", :battery_storage_gw, default=29.0))
+    add_primary("battery_storage_gw", _safe_value(nze_cap, :battery_storage_gw, default=29.0))
     add_primary("biomethane_share_cooking_percent", 54.0)
     add_primary("ev_sales_share_2040_percent", 90.0)
     add_primary("cement_ccs_share_percent", 75.0)

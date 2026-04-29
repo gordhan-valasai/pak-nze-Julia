@@ -13,7 +13,10 @@ function add_emissions_constraints!(model::Model, sets::ModelSets, params::Model
         end
     end
     @constraint(model, [y in sets.years], sum(model[:negative_emissions_mtco2][t,y] for t in ["beccs_power", "dac"] if t in sets.technologies) <= params.negative_emission_potential_mtco2[y] * 1e6)
+    if params.is_nze && params.negative_emissions_target_mt_2050 > 0
+        @constraint(model, sum(model[:negative_emissions_mtco2][t,2050] for t in ["beccs_power", "dac"] if t in sets.technologies) >= params.negative_emissions_target_mt_2050 * 1e6)
+    end
     if params.is_nze
-        @constraint(model, sum(model[:emissions_mtco2][t,2050] for t in sets.technologies) == 0.0)
+        @constraint(model, sum(model[:emissions_mtco2][t,2050] for t in sets.technologies) <= 0.0)
     end
 end

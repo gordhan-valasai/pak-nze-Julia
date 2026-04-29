@@ -13,3 +13,6 @@
 ## Phase 3 checks
 - Updated validation framework uses GIZ-EPRC PAK-IEM 2.0 booklet as primary 2050 benchmark and Pak-TIMES as secondary 2035 benchmark.
 - Booklet validation outcome: 10 of 13 metrics within 25 per cent.
+
+## Phase 4 checks
+- Updated release artefacts: CITATION.cff, .zenodo.json, README.md, Dockerfile labels, LICENSE notice, and data/raw/README.md attribution section.

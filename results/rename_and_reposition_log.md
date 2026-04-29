@@ -16,3 +16,10 @@
 
 ## Phase 4 checks
 - Updated release artefacts: CITATION.cff, .zenodo.json, README.md, Dockerfile labels, LICENSE notice, and data/raw/README.md attribution section.
+
+## Phase 5 checks
+- Re-ran `scripts/reproduce_paper.jl` successfully end-to-end.
+- Re-ran both sensitivity scripts and validation script successfully.
+- 10 of 13 metrics within 25 per cent.
+- 24/48/96-slice solve times (s): 2.34, 4.22, 14.21.
+- Storage CAPEX trajectories battery (GW): -0.00, -0.00, -0.00.

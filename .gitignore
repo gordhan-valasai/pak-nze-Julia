@@ -1,0 +1,44 @@
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+deps/deps.jl
+deps/build.log
+Manifest.toml.bak
+
+# Build artefacts
+results/figures/*.png
+results/figures/*.pdf
+results/tables/*.csv
+!results/tables/scenario_comparison.csv
+!results/tables/.gitkeep
+
+# Logs
+*.log
+results/*.md.bak
+
+# Data
+data/raw/*.pdf
+data/raw/*.xlsx
+data/raw/*.csv
+!data/raw/README.md
+data/processed/*.parquet
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore.bak
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Python (for the notebook)
+__pycache__/
+*.pyc
+.venv/
+venv/

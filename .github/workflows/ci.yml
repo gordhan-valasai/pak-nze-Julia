@@ -1,0 +1,24 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test-and-smoke-solve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - name: Cache Julia depot
+        uses: actions/cache@v4
+        with:
+          path: ~/.julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('**/Project.toml', '**/Manifest.toml') }}
+      - name: Instantiate
+        run: julia --project=. -e "using Pkg; Pkg.instantiate()"
+      - name: Tests
+        run: |
+          julia --project=. tests/test_units.jl
+          julia --project=. tests/test_sanity.jl
+          julia --project=. tests/test_balance.jl
+      - name: REF smoke solve with HiGHS
+        run: julia --project=. src/solve.jl --scenario REF --solver HiGHS --output-tag ci_ref

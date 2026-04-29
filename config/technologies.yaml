@@ -1,0 +1,22 @@
+service_demands:
+  electricity_grid_gwh: 170000
+  passenger_km_two_three_wheeler_mpkm: 420000
+  passenger_km_cars_mpkm: 350000
+  cement_output_mt: 68
+  fertiliser_output_mt: 8
+  buildings_cooking_pj: 620
+  agriculture_tubewell_pj: 180
+technologies:
+  - {name: hydro_run_of_river, sector: power, is_renewable: true, capex_usd_per_kw: 2100, fixed_om_usd_per_kw_yr: 45, var_om_usd_per_mwh: 4, efficiency_fraction: 1.0, capacity_factor: 0.47, emission_factor_tco2_per_mwh: 0.0}
+  - {name: hydro_reservoir, sector: power, is_renewable: true, capex_usd_per_kw: 2800, fixed_om_usd_per_kw_yr: 55, var_om_usd_per_mwh: 5, efficiency_fraction: 1.0, capacity_factor: 0.40, emission_factor_tco2_per_mwh: 0.0}
+  - {name: nuclear_k2_k3, sector: power, is_renewable: false, capex_usd_per_kw: 5200, fixed_om_usd_per_kw_yr: 130, var_om_usd_per_mwh: 3, efficiency_fraction: 0.33, capacity_factor: 0.85, emission_factor_tco2_per_mwh: 0.01}
+  - {name: coal_imported, sector: power, is_renewable: false, capex_usd_per_kw: 1800, fixed_om_usd_per_kw_yr: 55, var_om_usd_per_mwh: 6, efficiency_fraction: 0.38, capacity_factor: 0.72, emission_factor_tco2_per_mwh: 0.94}
+  - {name: thar_coal_domestic, sector: power, is_renewable: false, capex_usd_per_kw: 1650, fixed_om_usd_per_kw_yr: 50, var_om_usd_per_mwh: 6, efficiency_fraction: 0.37, capacity_factor: 0.74, emission_factor_tco2_per_mwh: 0.9}
+  - {name: rlng_ccgt, sector: power, is_renewable: false, capex_usd_per_kw: 1050, fixed_om_usd_per_kw_yr: 20, var_om_usd_per_mwh: 4, efficiency_fraction: 0.56, capacity_factor: 0.50, emission_factor_tco2_per_mwh: 0.39}
+  - {name: oil_thermal, sector: power, is_renewable: false, capex_usd_per_kw: 980, fixed_om_usd_per_kw_yr: 24, var_om_usd_per_mwh: 7, efficiency_fraction: 0.36, capacity_factor: 0.25, emission_factor_tco2_per_mwh: 0.78}
+  - {name: solar_utility, sector: power, is_renewable: true, capex_usd_per_kw: 620, fixed_om_usd_per_kw_yr: 11, var_om_usd_per_mwh: 1, efficiency_fraction: 1.0, capacity_factor: 0.24, emission_factor_tco2_per_mwh: 0.0}
+  - {name: solar_distributed, sector: power, is_renewable: true, capex_usd_per_kw: 760, fixed_om_usd_per_kw_yr: 12, var_om_usd_per_mwh: 1, efficiency_fraction: 1.0, capacity_factor: 0.20, emission_factor_tco2_per_mwh: 0.0}
+  - {name: onshore_wind, sector: power, is_renewable: true, capex_usd_per_kw: 1280, fixed_om_usd_per_kw_yr: 28, var_om_usd_per_mwh: 2, efficiency_fraction: 1.0, capacity_factor: 0.35, emission_factor_tco2_per_mwh: 0.0}
+  - {name: offshore_wind, sector: power, is_renewable: true, capex_usd_per_kw: 3150, fixed_om_usd_per_kw_yr: 95, var_om_usd_per_mwh: 4, efficiency_fraction: 1.0, capacity_factor: 0.45, emission_factor_tco2_per_mwh: 0.0}
+  - {name: battery_storage_4h, sector: power, is_renewable: false, capex_usd_per_kw: 430, fixed_om_usd_per_kw_yr: 10, var_om_usd_per_mwh: 2, efficiency_fraction: 0.9, capacity_factor: 0.18, emission_factor_tco2_per_mwh: 0.0}
+  - {name: green_h2_peaker, sector: power, is_renewable: false, capex_usd_per_kw: 1250, fixed_om_usd_per_kw_yr: 16, var_om_usd_per_mwh: 6, efficiency_fraction: 0.45, capacity_factor: 0.10, emission_factor_tco2_per_mwh: 0.0}

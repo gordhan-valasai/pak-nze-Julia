@@ -1,0 +1,8 @@
+include("../data/ingest/run_all_loaders.jl")
+run(`julia --project=. src/solve.jl --scenario REF --solver HiGHS --output-tag ref`)
+run(`julia --project=. src/solve.jl --scenario LCB --solver HiGHS --output-tag lcb`)
+run(`julia --project=. src/solve.jl --scenario NZE --solver HiGHS --climate-enabled false --output-tag nze_static`)
+run(`julia --project=. src/solve.jl --scenario NZE --solver HiGHS --climate-enabled true --output-tag nze_dynamic`)
+run(`julia --project=. src/solve.jl --scenario NZE --solver HiGHS --output-tag nze`)
+include("../post/run_all_postprocess.jl")
+println("Full paper reproduction complete")

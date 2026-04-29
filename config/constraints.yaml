@@ -1,0 +1,7 @@
+capacity_constraints:
+  coal_imported: {moratorium_start_year: 2024}
+  oil_thermal: {moratorium_start_year: 2024}
+build_limits:
+  solar_utility: {max_potential_gw: 120.0, max_buildrate_gw_per_year: 6.0} # TODO: replace with AEDB GIS data
+  onshore_wind: {max_potential_gw: 70.0, max_buildrate_gw_per_year: 4.0} # TODO: replace with AEDB GIS data
+  offshore_wind: {max_potential_gw: 25.0, max_buildrate_gw_per_year: 1.5} # TODO: replace with AEDB GIS data

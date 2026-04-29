@@ -1,0 +1,22 @@
+{
+  "title": "PAK-NZE-Julia: Open-Source Julia-JuMP Replication of the GIZ-EPRC PAK-IEM 2.0 Model with Climate Feedback and Provincial Disaggregation",
+  "creators": [
+    {
+      "name": "Valasai, Gordhan Das",
+      "orcid": "0000-0002-0476-4927",
+      "affiliation": "QUEST Nawabshah"
+    }
+  ],
+  "keywords": [
+    "energy systems modelling",
+    "net-zero",
+    "Pakistan",
+    "open source",
+    "JuMP",
+    "Julia",
+    "climate feedback",
+    "provincial energy planning",
+    "PAK-IEM 2.0 replication"
+  ],
+  "description": "PAK-NZE-Julia is an independent open-source replication of the official PAK-IEM 2.0 model published by the Energy Planning and Resource Centre (EPRC), Government of Pakistan, with technical support from Deutsche Gesellschaft fur Internationale Zusammenarbeit (GIZ) in February 2026. This Julia-JuMP implementation extends the framework with climate feedback, provincial disaggregation, and a full open-source release with reproducibility notebook support. The software is not affiliated with EPRC, GIZ, or BMZ."
+}

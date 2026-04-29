@@ -1,0 +1,41 @@
+NOTICE
+
+PAK-NZE-Julia is an independent open-source replication of the
+GIZ-EPRC Pakistan Integrated Energy Model (PAK-IEM 2.0), originally
+developed by the Energy Planning and Resource Centre (EPRC), Government
+of Pakistan, with technical support from Deutsche Gesellschaft fur
+Internationale Zusammenarbeit (GIZ) GmbH under the German Federal
+Ministry for Economic Cooperation and Development (BMZ), published
+February 2026.
+
+PAK-NZE-Julia is not affiliated with, endorsed by, or sponsored by
+EPRC, GIZ, or BMZ. The model architecture, scenario design, and
+calibration approach follow the public documentation of the official
+PAK-IEM 2.0; the implementation is independent and the codebase is
+released under the MIT licence below.
+
+Copyright (c) 2026 Gordhan Das Valasai
+Quaid-e-Awam University of Engineering, Science and Technology (QUEST)
+Nawabshah, Pakistan
+
+MIT License
+
+Copyright (c) 2026 Dr. Gordhan Das Valasai, QUEST Nawabshah
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

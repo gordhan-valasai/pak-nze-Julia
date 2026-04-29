@@ -1,0 +1,6 @@
+include("igcep_loader.jl")
+include("iea_weo_loader.jl")
+include("nrel_atb_loader.jl")
+include("demand_projection.jl")
+include("nepra_sankey_loader.jl")
+load_igcep_projects(); load_iea_weo_prices(); load_nrel_atb_data(); project_demand_drivers(); load_nepra_sankey(); println("All loaders completed")

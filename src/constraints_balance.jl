@@ -7,4 +7,18 @@ function add_balance_constraints!(model::Model, sets::ModelSets, params::ModelPa
         s == "electricity_grid_gwh" && continue
         @constraint(model, [y in sets.years], sum(model[:annual_activity_mwh][t,y] for t in sets.technologies) >= params.demand_by_service[(s,y)])
     end
+    @constraint(
+        model,
+        [f in sets.fuels, y in sets.years],
+        model[:fuel_import_mwh][f, y] == get(params.fuel_import_share, f, 0.0) * model[:fuel_use_mwh][f, y]
+    )
+    @constraint(
+        model,
+        [f in sets.fuels, y in sets.years],
+        model[:fuel_use_mwh][f, y] ==
+            sum(
+                model[:annual_activity_mwh][t, y] / max(get(params.efficiency_fraction, t, 1.0), 1e-6)
+                for t in sets.technologies if get(params.technology_fuel, t, "") == f
+            )
+    )
 end

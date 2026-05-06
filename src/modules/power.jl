@@ -1,13 +1,13 @@
 using JuMP
 """Power module constraints with provincial disaggregation and transmission."""
 function add_power_constraints!(model::Model, sets::ModelSets, params::ModelParameters)
-    "coal_imported" in sets.technologies && @constraint(model, model[:installed_capacity_gw]["coal_imported",2050] <= 0.2*model[:installed_capacity_gw]["coal_imported",2024])
-    "oil_thermal" in sets.technologies && @constraint(model, model[:installed_capacity_gw]["oil_thermal",2050] <= 0.1*model[:installed_capacity_gw]["oil_thermal",2024])
+    "coal_imported" in sets.technologies && @constraint(model, model[:installed_capacity_mw]["coal_imported",2050] <= 0.2*model[:installed_capacity_mw]["coal_imported",2024])
+    "oil_thermal" in sets.technologies && @constraint(model, model[:installed_capacity_mw]["oil_thermal",2050] <= 0.1*model[:installed_capacity_mw]["oil_thermal",2024])
     if "offshore_wind" in sets.technologies
-      for y in sets.years; y<2035 && @constraint(model, model[:new_capacity_gw]["offshore_wind",y]==0); end
+      for y in sets.years; y<2035 && @constraint(model, model[:new_capacity_mw]["offshore_wind",y]==0); end
     end
     if "green_h2_peaker" in sets.technologies
-      for y in sets.years; y<2035 && @constraint(model, model[:new_capacity_gw]["green_h2_peaker",y]==0); end
+      for y in sets.years; y<2035 && @constraint(model, model[:new_capacity_mw]["green_h2_peaker",y]==0); end
     end
 
     @constraint(model, [t in sets.technologies, y in sets.years, s in sets.slices],
@@ -31,8 +31,8 @@ function add_power_constraints!(model::Model, sets::ModelSets, params::ModelPara
             @constraint(model, model[:battery_soc_mwh][p,y,s] <= model[:battery_capacity_mw][p,y] * battery_duration_h)
         end
     end
-    if params.is_nze && params.battery_storage_target_gw_2050 > 0
-        @constraint(model, sum(model[:battery_capacity_mw][p,2050] for p in sets.provinces) >= params.battery_storage_target_gw_2050 * 1000.0)
+    if params.is_nze && params.battery_storage_target_mw_2050 > 0
+        @constraint(model, sum(model[:battery_capacity_mw][p,2050] for p in sets.provinces) >= params.battery_storage_target_mw_2050)
     end
 
     for y in sets.years, s in sets.slices, p in sets.provinces

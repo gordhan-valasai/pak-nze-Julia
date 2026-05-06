@@ -7,8 +7,9 @@ using .PAKNZEJulia
   sc = YAML.load_file("config/scenarios.yaml")
   tc = YAML.load_file("config/technologies.yaml")
   cc = YAML.load_file("config/constraints.yaml")
+  ec = YAML.load_file("config/existing_capacity.yaml")
   sets = build_sets(sc, tc)
-  params = build_parameters(sets, sc, cc, tc, "REF")
+  params = build_parameters(sets, sc, cc, tc, ec, "REF")
 
   model = Model(HiGHS.Optimizer)
   add_variables!(model, sets)

@@ -1,0 +1,29 @@
+existing_capacity_2024_gw:
+  hydro_run_of_river: 7.0
+  hydro_reservoir: 4.0
+  nuclear_k2_k3: 3.5
+  coal_imported: 5.0
+  thar_coal_domestic: 1.3
+  rlng_ccgt: 11.0
+  oil_thermal: 4.0
+  solar_utility: 1.0
+  solar_distributed: 1.5
+  onshore_wind: 1.8
+  biomass: 0.4
+
+retirement_schedule:
+  REF:
+    coal_imported: 2050
+    oil_thermal: 2040
+    thar_coal_domestic: 2055
+    rlng_ccgt: 2055
+  LCB:
+    coal_imported: 2038
+    oil_thermal: 2032
+    thar_coal_domestic: 2050
+    rlng_ccgt: 2048
+  NZE:
+    coal_imported: 2034
+    oil_thermal: 2032
+    thar_coal_domestic: 2045
+    rlng_ccgt: 2042

@@ -24,6 +24,7 @@ module PAKNZEJulia
 using ArgParse, CSV, DataFrames, Dates, JuMP, Logging, YAML
 include("sets.jl")
 include("parameters.jl")
+include("solution_container.jl")
 include("variables.jl")
 include("objective.jl")
 include("constraints_balance.jl")
@@ -36,5 +37,5 @@ include("modules/transport.jl")
 include("modules/buildings.jl")
 include("modules/agriculture.jl")
 include("modules/climate_feedback.jl")
-export ModelSets, ModelParameters, build_sets, build_parameters, add_variables!, add_objective!, add_balance_constraints!, add_capacity_constraints!, add_emissions_constraints!, add_power_constraints!, add_hydrogen_constraints!, add_industry_ccus_constraints!, add_transport_constraints!, add_buildings_constraints!, add_agriculture_constraints!, apply_climate_feedback!
+export ModelSets, ModelParameters, ModelSolution, build_sets, build_parameters, build_solution, save_solution, load_solution, add_variables!, add_objective!, add_balance_constraints!, add_capacity_constraints!, add_emissions_constraints!, add_power_constraints!, add_hydrogen_constraints!, add_industry_ccus_constraints!, add_transport_constraints!, add_buildings_constraints!, add_agriculture_constraints!, apply_climate_feedback!
 end

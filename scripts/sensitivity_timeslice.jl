@@ -22,10 +22,11 @@ function run_case(n::Int)
     sc = YAML.load_file("config/scenarios.yaml")
     tc = YAML.load_file("config/technologies.yaml")
     cc = YAML.load_file("config/constraints.yaml")
+    ec = YAML.load_file("config/existing_capacity.yaml")
     sc["global"]["representative_slices"] = make_slices(n)
 
     sets = build_sets(sc, tc)
-    params = build_parameters(sets, sc, cc, tc, "NZE")
+    params = build_parameters(sets, sc, cc, tc, ec, "NZE")
     apply_climate_feedback!(params, sets)
 
     model = Model(HiGHS.Optimizer)

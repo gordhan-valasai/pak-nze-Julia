@@ -20,5 +20,6 @@ jobs:
           julia --project=. tests/test_units.jl
           julia --project=. tests/test_sanity.jl
           julia --project=. tests/test_balance.jl
+          julia --project=. tests/test_visual_sanity.jl
       - name: REF smoke solve with HiGHS
         run: julia --project=. src/solve.jl --scenario REF --solver HiGHS --output-tag ci_ref

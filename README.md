@@ -5,39 +5,42 @@ GIZ-EPRC PAK-IEM 2.0 model.
 
 ## About
 
-PAK-NZE-Julia is an independent open-source implementation of the
-Pakistan Integrated Energy Model (PAK-IEM 2.0) framework, originally
-built in TIMES-VEDA by the Energy Planning and Resource Centre (EPRC),
-Government of Pakistan, with technical support from Deutsche
-Gesellschaft fur Internationale Zusammenarbeit (GIZ) GmbH under the
-German Federal Ministry for Economic Cooperation and Development (BMZ),
-published February 2026.
-
-PAK-NZE-Julia reimplements the PAK-IEM 2.0 framework in open-source
-Julia and JuMP, and extends it with three features the official model
-does not include:
-
-1. **Climate feedback module** linking CMIP6 temperature anomaly
-   trajectories (RCP2.6, RCP4.5, RCP8.5) to five energy sector
-   parameters: cooling demand, tube-well demand, hydropower capacity
-   factor, solar PV efficiency, and thermal plant efficiency.
-
-2. **Provincial disaggregation** of the power module across the seven
-   provinces and federal territories of Pakistan, with explicit
-   inter-provincial transmission and renewable resource ceilings drawn
-   from AEDB resource atlases.
-
-3. **Full open-source release** under the MIT licence with a Docker
-   image (HiGHS solver pre-installed for solver-licence-free
-   reproduction), a Jupyter notebook that regenerates every figure from
-   saved CSVs without invoking the solver, and a continuous integration
-   workflow.
+PAK-NZE-Julia is an open-source Julia-JuMP power-sector net-zero
+pathway model for Pakistan, extending the power-sector representation of
+the GIZ-EPRC PAK-IEM 2.0 framework with two features the official model
+does not include: (1) climate feedback module, (2) provincial
+disaggregation of generation across the seven provinces. Non-power-sector
+demand is taken as exogenous from the GIZ-EPRC booklet's NZE pathway.
+The model does not perform an economy-wide optimisation; for economy-wide
+analysis, refer to the official PAK-IEM 2.0.
 
 PAK-NZE-Julia is not affiliated with EPRC, GIZ, or BMZ. The official
 PAK-IEM 2.0 model is the authoritative national energy model for
 Pakistan; PAK-NZE-Julia is an open-source replication intended for
 independent academic verification, methodological extension, and reuse
 by researchers without access to the proprietary TIMES-VEDA toolchain.
+
+## Exogenous Electricity Demand Assumption
+
+The PAK-NZE-Julia power-sector model takes annual electricity demand as
+exogenous. The reference demand trajectory is drawn from the GIZ-EPRC
+PAK-IEM 2.0 booklet's NZE pathway and reaches approximately 415 TWh by
+2050. This demand is held constant across the REF, LCB, and NZE
+scenarios in PAK-NZE-Julia. The scenarios differ only in the supply-side
+technology mix and the carbon constraint, not in the depth of end-use
+electrification. This is a deliberate modelling choice that isolates the
+power-sector technology decision from the broader economy-wide question
+of demand-side electrification ambition. For an analysis of how
+electrification depth varies across pathways, refer to the official
+GIZ-EPRC PAK-IEM 2.0 booklet, which performs an economy-wide
+optimisation.
+
+### Methodology note
+
+In this release, the methodology is a power-sector supply optimisation
+under an exogenous demand trajectory. Scenario narratives (REF, LCB,
+NZE) are interpreted as alternative supply-side pathways under the same
+electricity demand envelope.
 
 ## Comparison with the Official GIZ-EPRC PAK-IEM 2.0 Model
 

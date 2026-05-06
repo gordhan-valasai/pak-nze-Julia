@@ -10,5 +10,5 @@ global:
     source: "CMIP6 downscaled for Pakistan, NASA NEX-GDDP-CMIP6 ensemble mean"
 scenarios:
   REF: {description: "Reference", carbon_price_usd_per_tco2: 0.0, net_zero_2050: false, renewable_target_2050: 0.45, transport_electrification_target_2050: 0.35}
-  LCB: {description: "Low-Carbon Balanced", carbon_price_usd_per_tco2: 35.0, net_zero_2050: false, renewable_target_2050: 0.60, transport_electrification_target_2050: 0.55}
+  LCB: {description: "Low-Carbon Balanced", carbon_price_usd_per_tco2: 15.0, net_zero_2050: false, renewable_target_2050: 0.60, renewable_share_cap_2050: 0.75, transport_electrification_target_2050: 0.55}
   NZE: {description: "Net-Zero Energy", carbon_price_usd_per_tco2: 95.0, net_zero_2050: true, renewable_target_2050: 0.93, transport_electrification_target_2050: 0.72, biomethane_cooking_target_2050: 0.54, ev_sales_share_target_2040: 0.90, green_ammonia_target_2050: 1.0, cement_ccs_target_2050: 0.75, electrolyser_capacity_gw_2040: 5.0, battery_storage_target_gw_2050: 35.0, negative_emissions_ceiling_mt_2050: 30.0, negative_emissions_target_mt_2050: 27.0}

@@ -9,7 +9,7 @@ using .PAKNZEJulia
 function run_unit_checks(params)
   bad=String[]
   for (t,v) in params.efficiency_fraction; !(0<v<=1) && push!(bad,"efficiency_fraction tech=$(t) value=$(v)"); end
-  for (t,v) in params.capex_usd_per_kw; v<0 && push!(bad,"capex_usd_per_kw tech=$(t) value=$(v)"); end
+  for (t,v) in params.capex_usd_per_mw; v<0 && push!(bad,"capex_usd_per_mw tech=$(t) value=$(v)"); end
   for (t,v) in params.capacity_factor; !(0<=v<=1) && push!(bad,"capacity_factor tech=$(t) value=$(v)"); end
   for (t,v) in params.emission_factor_tco2_per_mwh; abs(v)>2.5 && push!(bad,"emission_factor_tco2_per_mwh tech=$(t) value=$(v)"); end
   if !isempty(bad)
@@ -23,8 +23,9 @@ if abspath(PROGRAM_FILE) == @__FILE__
   scenario_config = YAML.load_file("config/scenarios.yaml")
   tech_config = YAML.load_file("config/technologies.yaml")
   constraints_config = YAML.load_file("config/constraints.yaml")
+  existing_config = YAML.load_file("config/existing_capacity.yaml")
   sets = build_sets(scenario_config, tech_config)
-  params = build_parameters(sets, scenario_config, constraints_config, tech_config, "REF")
+  params = build_parameters(sets, scenario_config, constraints_config, tech_config, existing_config, "REF")
   run_unit_checks(params)
   println("Unit checks completed")
 end

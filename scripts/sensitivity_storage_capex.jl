@@ -6,9 +6,10 @@ function run_case(label::String; multiplier::Float64=1.0, start_capex::Union{Not
     sc = YAML.load_file("config/scenarios.yaml")
     tc = YAML.load_file("config/technologies.yaml")
     cc = YAML.load_file("config/constraints.yaml")
+    ec = YAML.load_file("config/existing_capacity.yaml")
 
     sets = build_sets(sc, tc)
-    params = build_parameters(sets, sc, cc, tc, "NZE")
+    params = build_parameters(sets, sc, cc, tc, ec, "NZE")
     apply_climate_feedback!(params, sets)
 
     if start_capex !== nothing && end_capex !== nothing

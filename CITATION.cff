@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "PAK-NZE-Julia: Open-Source Julia-JuMP Replication of the GIZ-EPRC PAK-IEM 2.0 Model with Climate Feedback and Provincial Disaggregation"
+title: "PAK-NZE-Julia: An Open-Source Julia-JuMP Power-Sector Net-Zero Pathway Model for Pakistan with Climate Feedback and Provincial Disaggregation"
 authors:
   - family-names: Valasai
     given-names: Gordhan Das
     orcid: "https://orcid.org/0000-0002-0476-4927"
     affiliation: "Quaid-e-Awam University of Engineering, Science and Technology (QUEST), Nawabshah, Pakistan"
-version: "0.1.1"
+version: "0.2.0"
 date-released: "2026-04-29"
 license: MIT
 doi: "10.5281/zenodo.PLACEHOLDER"
